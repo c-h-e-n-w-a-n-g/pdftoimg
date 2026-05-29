@@ -77,6 +77,29 @@ minerU使用时需要关闭代理，否则会卡住。
 
 > 同 DOI 多文件会按"保留最大体积"自动去重。
 
+### 4.1.b 没有 Zotero、PDF 是自己下的怎么办？
+
+`rename_and_copy.py` 是为 Zotero 用户写的，依赖 Zotero 特定的文件名格式（`"作者 等 - 年份 - ..."`）。如果你的 PDF 是自己下的、文件名各种各样，**直接跳过第 1 步**：
+
+1. 自己把 PDF 改名成 `{FirstAuthor}{Year}.pdf` 风格（如 `Smith2020.pdf`），文件名 stem 会成为下游所有产物的 `paper_id`
+   - 唯一即可，不要含空格和特殊字符
+2. 把改好名的 PDF 全部放进 `collect/literature/` 目录
+3. 跑 mineru 开始的后 3 步：
+
+   ```bash
+   python run_stage1.py --from-step 2
+   ```
+
+4. *（可选）* 想要 `dataset_meta.csv` 里带 DOI/title 两列追溯，手写一份 `literature_mapping.xlsx`，三列：
+
+   | 列名         | 说明                |
+   | ---------- | ----------------- |
+   | `new_name` | 文件名（含 .pdf）       |
+   | `doi`      | DOI               |
+   | `title`    | 论文标题              |
+
+   不想要就跳过这一步，对应列会留空，不影响后续流程。
+
 ### 4.2 PDF → HTML阶段
 
 ```bash
