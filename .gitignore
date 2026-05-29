@@ -1,0 +1,53 @@
+# ===== 版权材料 =====
+literature/
+papers/
+mineru_out/
+mineru_test/
+image_out/
+image/
+*.pdf
+
+# ===== 中间产物 / 数据文件（用通配，所有 csv/xlsx/txt/zip 都不传） =====
+*.csv
+*.xlsx
+*.xls
+*.txt
+!requirements.txt
+*.zip
+*.bib
+*.js
+dataset_browser.html
+_mineru_batch_tmp/
+
+# ===== 旧文档（不属于本仓库的 pipeline） =====
+PIPELINE.md
+REPORT.md
+
+# ===== A 方案不传的旧脚本 =====
+diagnose.py
+download_pdfs.py
+filter_tem_papers.py
+gen_tag_js.py
+rename_pdfs.py
+
+# ===== Python =====
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+
+# ===== IDE =====
+.idea/
+.vscode/
+
+# ===== 第三方源码（vendor 进来的，不能传） =====
+scrapling/
+
+# ===== 旧脚本目录 =====
+code/
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
