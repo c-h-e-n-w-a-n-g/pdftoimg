@@ -16,7 +16,7 @@ import pandas as pd
 
 MINERU_OUT = Path(r"D:\mg\collect\mineru_out")
 MAPPING_XLSX = Path(r"D:\mg\collect\literature_mapping.xlsx")
-OUT_CSV = Path(r"D:\mg\collect\dataset_meta.csv")
+OUT_CSV = Path(r"D:\mg\collect\441\pdf_metadata.csv")
 
 # 菌种词表：(canonical_name, 正则模式列表)。
 # 都按 IGNORECASE 匹配。strain code 用单词边界避免误伤
@@ -204,7 +204,7 @@ def main():
     # 论文 metadata（DOI + title）
     meta = {}
     if MAPPING_XLSX.exists():
-        mdf = pd.read_excel(MAPPING_XLSX)
+        mdf = pd.read_csv(MAPPING_XLSX, encoding="utf-8-sig")
         for _, r in mdf.iterrows():
             pid = Path(str(r["new_name"])).stem if r["new_name"] else ""
             if pid:

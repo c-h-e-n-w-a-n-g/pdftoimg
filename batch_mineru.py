@@ -13,7 +13,7 @@ from pathlib import Path
 
 import pandas as pd
 
-LITERATURE = Path(r"D:\mg\collect\literature")
+LITERATURE = Path(r"D:\mg\collect\441")
 OUTPUT = Path(r"D:\mg\collect\mineru_out")
 LOG_CSV = Path(r"D:\mg\collect\batch_log.csv")
 TMP_BATCH_DIR = Path(r"D:\mg\collect\_mineru_batch_tmp")

@@ -79,10 +79,10 @@ minerU使用时需要关闭代理，否则会卡住。
 
 ### 4.1.b 没有 Zotero、PDF 是自己下的怎么办？
 
-`rename_and_copy.py` 是为 Zotero 用户写的，依赖 Zotero 特定的文件名格式（`"作者 等 - 年份 - ..."`）。如果你的 PDF 是自己下的、文件名各种各样，**直接跳过第 1 步**：
+`rename_and_copy.py` 是为 Zotero 用户写的，依赖 Zotero 特定的文件名格式（`"作者 等 - 年份 - ..."`）。如果你的 PDF 是自己下的、文件名各种各样，用 `rename_downloaded_pdfs.py` 代替第 1 步：
 
-1. 自己把 PDF 改名成 `{FirstAuthor}{Year}.pdf` 风格（如 `Smith2020.pdf`），文件名 stem 会成为下游所有产物的 `paper_id`
-   - 唯一即可，不要含空格和特殊字符
+1. 配置 `rename_downloaded_pdfs.py` 里的 `ROOT` 为你的 PDF 所在目录，先 `DRY_RUN = True` 预览重命名结果，确认无误后改成 `False` 执行
+   - 脚本会从 PDF metadata 读取第一作者姓氏 + 年份，读不到则用 `unknown_001` 等编号，所有文件名均为 ASCII
 2. 把改好名的 PDF 全部放进 `collect/literature/` 目录
 3. 跑 mineru 开始的后 3 步：
 
@@ -159,7 +159,8 @@ A: 别用 Excel 编辑这些 CSV——Excel 会破坏 UTF-8 非 ASCII 字符。�
 | 文件                               | 用途                              |
 | -------------------------------- | ------------------------------- |
 | `run_stage1.py`                  | 阶段 1 orchestrator（4 步串行）        |
-| `rename_and_copy.py`             | Zotero PDF 重命名 + 复制             |
+| `rename_and_copy.py`             | Zotero PDF 重命名 + 复制（Zotero 用户用）|
+| `rename_downloaded_pdfs.py`      | 直接下载的 PDF 重命名（非 Zotero 用户用）  |
 | `batch_mineru.py`                | 分批跑 MinerU                      |
 | `extract_species_and_figures.py` | 抽 figure + caption + 菌种         |
 | `generate_browser.py`            | 生成筛选用 HTML                      |
