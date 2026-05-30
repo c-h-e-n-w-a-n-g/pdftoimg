@@ -16,6 +16,7 @@ image/
 *.zip
 *.bib
 *.js
+*.rar
 dataset_browser.html
 _mineru_batch_tmp/
 
